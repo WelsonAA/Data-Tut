@@ -95,6 +95,7 @@ bool List::ascendingOrder() {
 }
 void List::reverse() {
 
+
 }
 ostream &operator<<(ostream & out, const List & aList){
     aList.display(out);
