@@ -44,7 +44,7 @@ void List::erase(int pos){
         else if(0 <= pos < mySize){
             for (int i = pos; i < mySize -1; i++) {
                 myArray[i] = myArray[i + 1];
-            }
+            }kilkhj
         }
         mySize--;
 }
