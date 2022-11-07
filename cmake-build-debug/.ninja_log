@@ -1,5 +1,6 @@
 # ninja log v5
-2	436	6887787681099367	CMakeFiles/Data_Tut.dir/main.cpp.obj	60aa2b03bc7bf25a
-2	46	6885212991800703	CMakeFiles/Data_Tut.dir/List.cpp.obj	53ad2a062de4d41
-436	515	6887787681864570	Data_Tut.exe	2626423f6400c57
-5	472	6887787396060707	CMakeFiles/Data_Tut.dir/DList.cpp.obj	407a19b73ab60828
+4	1007	6888355649937258	CMakeFiles/Data_Tut.dir/main.cpp.obj	60aa2b03bc7bf25a
+43	461	6888299134098370	CMakeFiles/Data_Tut.dir/List.cpp.obj	53ad2a062de4d41
+973	1123	6888434303445631	Data_Tut.exe	9005277cec74b29b
+4	100	6888306657637414	CMakeFiles/Data_Tut.dir/DList.cpp.obj	407a19b73ab60828
+4	972	6888434301969747	CMakeFiles/Data_Tut.dir/LList.cpp.obj	e418d7ab990dc0f8

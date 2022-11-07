@@ -6,16 +6,17 @@ List::List():mySize(0),first(NULL){
 
 }
 List::List(const List & origList):mySize(origList.getMySize()),first(NULL){
-    this->first=new (nothrow)Node(origList.first->data);
-    NodePointer newptr=this->first;
-    NodePointer oldptr=origList.first;
-    for(int i=1;i<mySize;i++){
-        newptr->next=new (nothrow) Node(oldptr->data);
-        newptr=newptr->next;
-        oldptr=oldptr->next;
+    if (mySize == 0) return;
+    first = new Node(origList.first->data);
+    NodePointer newPtr=first;
+    NodePointer oldPtr =origList.first->next;
+    while(oldPtr!=NULL){
+        newPtr->next=new(nothrow) Node(oldPtr->data);
+        newPtr=newPtr->next;
+        oldPtr=oldPtr->next;
     }
-    newptr=NULL;
-    oldptr=NULL;
+
+
 }
 List::~List(){
     NodePointer oldptr=this->first;
@@ -27,6 +28,22 @@ List::~List(){
     }
 }
 
+bool List::operator==(const List &rightSide) const {
+    bool flag=true;
+    NodePointer thisptr=this->first;
+    NodePointer otherptr=rightSide.first;
+    if(this->getMySize()!=rightSide.getMySize())
+        return false;
+    else {
+        for (int i = 0; i < this->getMySize();i++){
+            if(thisptr->data!=otherptr->data)
+                return false;
+            thisptr=thisptr->next;
+            otherptr=otherptr->next;
+        }
+            return flag;
+    }
+}
 const List &List::operator=(const List &rightSide) {
     this->mySize=rightSide.mySize;
     this->first=rightSide.first;
@@ -35,45 +52,51 @@ const List &List::operator=(const List &rightSide) {
 int List::getMySize() const {
     return mySize;
 }
-bool List::empty() {
+bool List::empty() const {
     if(mySize==0)return true;
     else return false;
 }
+
 void List::insert(ElementType dataVal, int index) {
-    if(0 <= index <= mySize){
-        NodePointer newNode=new(nothrow)Node(dataVal);
-        if(index==0){
-            this->first=newNode;
-        }
-        NodePointer iPtr=this->first;
-        for(int i=0;i<index;i++) {
-            if(i==(index-1)){
-                NodePointer tmp=iPtr;
-                tmp->next=newNode;
-                newNode->next=iPtr->next;
-            }
-            iPtr=iPtr->next;
-        }
-        ++this->mySize;
-    }else{
+    if(0>index || mySize<index){
         cout<<"Invalid Index\n";
+        return;
+    }else{
+        mySize++;
+        NodePointer newNode=new(nothrow)Node(dataVal);
+        NodePointer tmp=this->first;
+        if(index==0){
+            newNode->next=this->first;
+            this->first=newNode;
+        }else{
+            for(int i= 1;i<index;i++){
+                tmp=tmp->next;
+            }
+            newNode->next=tmp->next;
+            tmp->next=newNode;
+        }
     }
 }
 void List::erase(int index){
-    if(0 <= index < mySize){
-        NodePointer iPtr=this->first;
-        for(int i=0;i<index;i++){
-            if(i==(index-1)){
-                NodePointer tmp=iPtr->next;
-                iPtr=iPtr->next->next;
-                delete tmp;
-            }
-            iPtr=iPtr->next;
-        }
-        --this->mySize;
+    if (index < 0 || index >= mySize)
+    {
+        cerr << "Illegal location to delete -- " << index << endl;
+        return; }
+    mySize--;
+    List::NodePointer ptr,
+            predPtr = first;
+    if (index == 0)
+    {
+        ptr = first;
+        first = ptr->next;
+        delete ptr;
     }
-    else{
-        cout<<"Invalid Index\n";
+    else {
+        for(int i = 1; i < index; i++)
+            predPtr = predPtr->next;
+        ptr = predPtr->next;
+        predPtr->next = ptr->next;
+        delete ptr;
     }
 }
 int List::nodeCount() {
@@ -95,7 +118,16 @@ bool List::ascendingOrder() {
 }
 void List::reverse() {
 
-
+}
+void List::display(ostream & out) const{
+    if(this->empty()==true){
+        cout<<"Empty List\n";
+        return;
+    }else{
+        for(NodePointer tmp=this->first;tmp!=NULL;tmp=tmp->next){
+            cout<<tmp->data<<endl;
+        }
+    }
 }
 ostream &operator<<(ostream & out, const List & aList){
     aList.display(out);

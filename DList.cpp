@@ -1,6 +1,7 @@
 //
 // Created by George Welson on 22-Oct-22.
 //
+/*
 #include "DList.h"
 List::List(int myCapacity) : myCapacity(myCapacity),mySize(INITIALSIZE),myArray(NULL){
     myArray = new (nothrow)ElementType[myCapacity];
@@ -108,4 +109,4 @@ ElementType* List::getMyArray() const {
 ostream & operator<< (ostream & out, const List & aList){
     aList.display(out);
     return out;
-}
+}*/

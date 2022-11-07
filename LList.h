@@ -67,7 +67,8 @@ public:
      Precondition:  This list must be assigned a value.
      Postcondition: A copy of rightSide has been assigned to this list.
      --------------------------------------------------------------------*/
-    bool empty();
+    bool operator==(const List & rightSide ) const;
+    bool empty() const;
     /*--------------------------------------------------------------------
      Check if this list is empty
      Precondition:  None.
