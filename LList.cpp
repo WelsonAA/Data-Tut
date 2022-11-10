@@ -125,7 +125,7 @@ void List::display(ostream & out) const{
         return;
     }else{
         for(NodePointer tmp=this->first;tmp!=NULL;tmp=tmp->next){
-            cout<<tmp->data<<endl;
+            out<<tmp->data<<endl;
         }
     }
 }

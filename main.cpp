@@ -1,7 +1,46 @@
 #include <iostream>
 #include "LList.h"
+//#include "Q1.h"
+#include "SQueue.h"
 using namespace std;
 int main() {
+    Queue q1;
+    q1.enqueue(5);
+    q1.enqueue(15);
+    q1.enqueue(500);
+    q1.enqueue(20);
+    q1.enqueue(75);
+    q1.enqueue(125);
+    q1.enqueue(420);
+    q1.dequeue();
+    q1.dequeue();
+    q1.dequeue();
+    cout<<q1<<endl;
+    q1.movNthFront(4);
+    cout<<q1;
+
+
+
+
+
+
+
+
+
+    /*Stack s1;
+    s1.push(52);
+    cout<<s1.empty()<<endl;
+    cout<<s1;
+    s1.push(27);
+    s1.push(252);
+    cout<<s1.top()<<endl;
+    cout<<s1;
+    s1.pop();
+    cout<<s1;*/
+
+
+
+    /*
     List myList;
     cout<<myList.empty()<<endl;
     myList.insert(20,0);
@@ -22,5 +61,6 @@ int main() {
     cout<<myList.empty()<<endl;
     cout<<myList.getMySize()<<endl;
     //copy.insert(70,0);
-    cout<<bool(copy==myList)<<endl;
+    cout<<bool(copy==myList)<<endl;*/
+    //Question1();
 }

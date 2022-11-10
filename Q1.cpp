@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int Quesion1() {
+int Question1() {
     string str;
     cout<<"Enter a String: ";
     getline (cin,str);

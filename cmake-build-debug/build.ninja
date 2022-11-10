@@ -79,6 +79,24 @@ build CMakeFiles/Data_Tut.dir/Q1.cpp.obj: CXX_COMPILER__Data_Tut_Debug E$:/Data$
   OBJECT_DIR = CMakeFiles\Data_Tut.dir
   OBJECT_FILE_DIR = CMakeFiles\Data_Tut.dir
 
+build CMakeFiles/Data_Tut.dir/SStack.cpp.obj: CXX_COMPILER__Data_Tut_Debug E$:/Data$ Tut/SStack.cpp || cmake_object_order_depends_target_Data_Tut
+  DEP_FILE = CMakeFiles\Data_Tut.dir\SStack.cpp.obj.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = CMakeFiles\Data_Tut.dir
+  OBJECT_FILE_DIR = CMakeFiles\Data_Tut.dir
+
+build CMakeFiles/Data_Tut.dir/DStack.cpp.obj: CXX_COMPILER__Data_Tut_Debug E$:/Data$ Tut/DStack.cpp || cmake_object_order_depends_target_Data_Tut
+  DEP_FILE = CMakeFiles\Data_Tut.dir\DStack.cpp.obj.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = CMakeFiles\Data_Tut.dir
+  OBJECT_FILE_DIR = CMakeFiles\Data_Tut.dir
+
+build CMakeFiles/Data_Tut.dir/SQueue.cpp.obj: CXX_COMPILER__Data_Tut_Debug E$:/Data$ Tut/SQueue.cpp || cmake_object_order_depends_target_Data_Tut
+  DEP_FILE = CMakeFiles\Data_Tut.dir\SQueue.cpp.obj.d
+  FLAGS = -g -std=gnu++23
+  OBJECT_DIR = CMakeFiles\Data_Tut.dir
+  OBJECT_FILE_DIR = CMakeFiles\Data_Tut.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Data_Tut
@@ -87,7 +105,7 @@ build CMakeFiles/Data_Tut.dir/Q1.cpp.obj: CXX_COMPILER__Data_Tut_Debug E$:/Data$
 #############################################
 # Link the executable Data_Tut.exe
 
-build Data_Tut.exe: CXX_EXECUTABLE_LINKER__Data_Tut_Debug CMakeFiles/Data_Tut.dir/main.cpp.obj CMakeFiles/Data_Tut.dir/List.cpp.obj CMakeFiles/Data_Tut.dir/DList.cpp.obj CMakeFiles/Data_Tut.dir/LList.cpp.obj CMakeFiles/Data_Tut.dir/Q1.cpp.obj
+build Data_Tut.exe: CXX_EXECUTABLE_LINKER__Data_Tut_Debug CMakeFiles/Data_Tut.dir/main.cpp.obj CMakeFiles/Data_Tut.dir/List.cpp.obj CMakeFiles/Data_Tut.dir/DList.cpp.obj CMakeFiles/Data_Tut.dir/LList.cpp.obj CMakeFiles/Data_Tut.dir/Q1.cpp.obj CMakeFiles/Data_Tut.dir/SStack.cpp.obj CMakeFiles/Data_Tut.dir/DStack.cpp.obj CMakeFiles/Data_Tut.dir/SQueue.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Data_Tut.dir
