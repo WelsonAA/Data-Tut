@@ -145,10 +145,11 @@ void Stack<StackElement>::pop() {
 template<typename StackElement>
 void Stack<StackElement>::display(std::ostream &out) const {
     if(this->empty()==true)
-        cout<<"This Stack is empty"<<endl;
+        out<<"This Stack is empty"<<endl;
     else
         for(int i=0;i<=myTop;i++)
-            cout<<myArray[i]<<endl;
+            out<<myArray[i]<<" ";
+        out<<endl;
 }
 template<typename StackElement>
 bool Stack<StackElement>::operator==(const Stack<StackElement> &rightSide) const {

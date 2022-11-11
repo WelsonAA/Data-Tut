@@ -2,9 +2,10 @@
 #include "LList.h"
 //#include "Q1.h"
 #include "SQueue.h"
+#include "SStack.h"
 using namespace std;
 int main() {
-    Queue q1;
+    /*Queue q1;
     q1.enqueue(5);
     q1.enqueue(15);
     q1.enqueue(500);
@@ -27,7 +28,7 @@ int main() {
     q1.dequeue();
     cout<<q1<<endl;
     q1.movNthFront(3);
-    cout<<q1;
+    cout<<q1;*/
 
 
 
@@ -37,7 +38,7 @@ int main() {
 
 
 
-    /*Stack s1;
+    Stack<int> s1;
     s1.push(52);
     cout<<s1.empty()<<endl;
     cout<<s1;
@@ -46,8 +47,13 @@ int main() {
     cout<<s1.top()<<endl;
     cout<<s1;
     s1.pop();
-    cout<<s1;*/
-
+    cout<<s1;
+    Stack<int> s2;
+    s2.push(52);
+    s2.push(27);
+    s2.push(252);
+    s2.pop();
+    cout<<(s1==s2);
 
 
     /*
