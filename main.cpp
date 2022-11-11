@@ -12,11 +12,21 @@ int main() {
     q1.enqueue(75);
     q1.enqueue(125);
     q1.enqueue(420);
-    q1.dequeue();
-    q1.dequeue();
+    cout<<q1<<endl;
+    q1.movNthFront(3);
+    cout<<q1;
     q1.dequeue();
     cout<<q1<<endl;
-    q1.movNthFront(4);
+    q1.movNthFront(3);
+    cout<<q1;
+    q1.dequeue();
+    q1.dequeue();
+    q1.dequeue();
+    q1.enqueue(670);
+    q1.enqueue(540);
+    q1.dequeue();
+    cout<<q1<<endl;
+    q1.movNthFront(3);
     cout<<q1;
 
 

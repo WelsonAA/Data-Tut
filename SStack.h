@@ -27,8 +27,9 @@
 using namespace std;
 
 const int STACK_CAPACITY = 128;
-typedef int StackElement;
-
+//typedef int StackElement;
+//typedef StackElement T;
+template<typename StackElement>
 class Stack
 {
 public:
@@ -88,7 +89,7 @@ public:
           is empty; in that case, an error message is displayed and
           execution allowed to proceed.
      -----------------------------------------------------------------------*/
-    bool operator==(const Stack & rightSide ) const;
+    bool operator==(const Stack<StackElement> & rightSide ) const;
 private:
     /***** Data Members *****/
     StackElement myArray[STACK_CAPACITY];
@@ -97,6 +98,73 @@ private:
 }; // end of class declaration
 
 //------ Prototype of output operator
-ostream & operator<< (ostream & out, const Stack & aStack);
+template<typename StackElement>
+ostream & operator<< (ostream & out, const Stack<StackElement> & aStack);
 
 #endif /* Stack_hpp */
+//
+// Created by George Welson on 08-Nov-22.
+//
+
+
+
+template<typename StackElement>
+Stack<StackElement>::Stack():myTop(-1) {
+
+}
+template<typename StackElement>
+bool Stack<StackElement>::empty() const {
+    if(myTop<0)
+        return true;
+    else
+        return false;
+}
+template<typename StackElement>
+void Stack<StackElement>::push(const StackElement &value) {
+    if(myTop<STACK_CAPACITY-1){
+        ++myTop;
+        myArray[myTop]=value;
+    }else
+        cout<<"This Stack is full"<<endl;
+}
+template<typename StackElement>
+StackElement Stack<StackElement>::top() const {
+    if(this->empty()==true){
+        cout<<"This Stack is empty"<<endl;
+        return NULL;
+    }else
+        return myArray[myTop];
+}
+template<typename StackElement>
+void Stack<StackElement>::pop() {
+    if(this->empty()==true)
+        cout<<"This Stack is empty"<<endl;
+    else
+        --myTop;
+}
+template<typename StackElement>
+void Stack<StackElement>::display(std::ostream &out) const {
+    if(this->empty()==true)
+        cout<<"This Stack is empty"<<endl;
+    else
+        for(int i=0;i<=myTop;i++)
+            cout<<myArray[i]<<endl;
+}
+template<typename StackElement>
+bool Stack<StackElement>::operator==(const Stack<StackElement> &rightSide) const {
+    if(this->top()!=rightSide.top())
+        return false;
+    else {
+        for (int i = 0; i <= this->myTop; i++) {
+            if (this->myArray[i] != rightSide.myArray[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+template<typename StackElement>
+ostream & operator<< (ostream & out, const Stack<StackElement> & aStack){
+    aStack.display(out);
+    return out;
+}

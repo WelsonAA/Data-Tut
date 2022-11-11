@@ -1,42 +1,49 @@
 //
 // Created by George Welson on 08-Nov-22.
 //
+/*
 #include "SStack.h"
-Stack::Stack():myTop(-1) {}
-bool Stack::empty() const {
+template<typename StackElement>
+Stack<StackElement>::Stack():myTop(-1) {
+
+}
+template<typename StackElement>
+bool Stack<StackElement>::empty() const {
     if(myTop<0)
         return true;
     else
         return false;
 }
-void Stack::push(const StackElement &value) {
+template<typename StackElement>
+void Stack<StackElement>::push(const StackElement &value) {
     if(myTop<STACK_CAPACITY-1){
         ++myTop;
         myArray[myTop]=value;
     }else
         cout<<"This Stack is full"<<endl;
 }
-StackElement Stack::top() const {
+template<typename StackElement>
+StackElement Stack<StackElement>::top() const {
     if(this->empty()==true){
         cout<<"This Stack is empty"<<endl;
         return NULL;
     }else
         return myArray[myTop];
 }
-void Stack::pop() {
+void Stack<StackElement>::pop() {
     if(this->empty()==true)
         cout<<"This Stack is empty"<<endl;
     else
         --myTop;
 }
-void Stack::display(std::ostream &out) const {
+void Stack<StackElement>::display(std::ostream &out) const {
     if(this->empty()==true)
         cout<<"This Stack is empty"<<endl;
     else
         for(int i=0;i<=myTop;i++)
             cout<<myArray[i]<<endl;
 }
-bool Stack::operator==(const Stack &rightSide) const {
+bool Stack<StackElement>::operator==(const Stack<StackElement> &rightSide) const {
     if(this->top()!=rightSide.top())
         return false;
     else {
@@ -48,7 +55,7 @@ bool Stack::operator==(const Stack &rightSide) const {
         return true;
     }
 }
-ostream & operator<< (ostream & out, const Stack & aStack){
+ostream & operator<< (ostream & out, const Stack<StackElement> & aStack){
     aStack.display(out);
     return out;
-}
+}*/

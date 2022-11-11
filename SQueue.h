@@ -30,9 +30,8 @@
 #include <iostream>
 using namespace std;
 
-const int QUEUE_CAPACITY = 128;
+const int QUEUE_CAPACITY = 8;
 typedef int QueueElement;
-
 class Queue
 {
 public:
@@ -56,7 +55,7 @@ public:
      Postcondition: True is returned if the queue is empty and false is
      returned otherwise.
      ----------------------------------------------------------------------*/
-
+    bool full() const;
     void enqueue(const QueueElement & value);
     /*-----------------------------------------------------------------------
      Add a value to a queue.
@@ -99,10 +98,11 @@ public:
      ----------------------------------------------------------------------*/
     void movNthFront(int n);
     void swap(int x,int y);
+    int size() const;
 private:
     /***** Data Members *****/
     int myFront,
-            myBack;
+            myBack,mySize;
     QueueElement myArray[QUEUE_CAPACITY];
 
 }; // end of class declaration

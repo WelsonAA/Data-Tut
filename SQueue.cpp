@@ -2,41 +2,36 @@
 // Created by George Welson on 08-Nov-22.
 //
 #include "SQueue.h"
-Queue::Queue():myFront(-1),myBack(-1) {
+Queue::Queue():myFront(-1),myBack(-1),mySize(0){
 
 }
-
 bool Queue::empty() const {
     if(this->myBack==-1 && this->myFront==-1)
         return true;
     else
         return false;
 }
-
+bool Queue::full() const {
+    if((myFront==myBack)&&(empty()!=true))
+        return true;
+    else
+        return false;
+}
 void Queue::enqueue(const QueueElement &value) {
-    if(this->myBack==QUEUE_CAPACITY-1){
+    if(full()==true){
         cout<<"This Queue is full\n";
         return;
     }
     if(this->empty()==true){
         ++this->myFront;
-        ++myBack;
+        myBack+=2;
         this->myArray[this->myFront]=value;
     }else{
-        ++this->myBack;
         this->myArray[this->myBack]=value;
+        myBack=(myBack+1)%(QUEUE_CAPACITY);
     }
+    mySize++;
 }
-
-void Queue::display(ostream &out) const {
-    if(this->empty()==true)
-        out<<"This Queue is empty\n";
-    else {
-        for(int i=myFront;i<myBack+1;i++)
-            out<<this->myArray[i]<<endl;
-    }
-}
-
 QueueElement Queue::front() const {
     if(this->empty()==true) {
         cout << "This Queue is empty\n";
@@ -58,38 +53,85 @@ QueueElement Queue::back() const {
 void Queue::dequeue() {
     if(this->empty()==true) {
         cout << "This Queue is empty\n";
-    }else if(this->myFront==this->myBack){
+        return;
+    }else if(this->myFront==this->myBack-1){
         this->myFront=-1;
         this->myBack=-1;
     }else{
-        this->myFront++;
+        this->myFront=(myFront+1)%QUEUE_CAPACITY;
     }
+    mySize--;
 }
-
 void Queue::movNthFront(int n) {
+    //validating user input
+    if(n>QUEUE_CAPACITY||n<=1||n>mySize) {
+        cout << "Invalid index\n";
+        return;
+    }
+    QueueElement newArray[QUEUE_CAPACITY];
+    if(full()==true){
+        int j=0;
+        for (int i = myFront; j<QUEUE_CAPACITY; i = (i + 1) % (QUEUE_CAPACITY)) {
+            newArray[j]= this->myArray[i];
+            j++;
+        }
+        // 0 1 2 3 4 5
+    }else{
+        int j=0;
+        for (int i = myFront; i != myBack; i = (i + 1) % (QUEUE_CAPACITY)) {
+            newArray[j]= this->myArray[i];
+            j++;
+        }
+    }
+    for(int i=0;i<mySize;i++){
+        this->myArray[i]=newArray[i];
+    }
+    if(full()==true){
+        myFront=0;
+        myBack=0;
+    }else if(empty()==true){
+        myFront=-1;
+        myBack=-1;
+    }else{
+        myFront=0;
+        myBack=mySize;
+    }
     int k=n+(myFront-1);
-    if(k>myBack||k<=myFront){
+    if(k<1||k>QUEUE_CAPACITY){
         cout<<"Invalid index\n";
         return;
     }
     else{
         for(int i=k;i>myFront;i--){
-            swap(i,i-1);
+            swap(i,(i - 1));
         }
     }
 }
-
 void Queue::swap(int x, int y) {
-    if(x>myBack||x<=myFront||y>myBack||y<myFront){
-        cout<<"Invalid index at swap\n";
-        return;
-    }else{
-        QueueElement temp= this->myArray[x];
-        this->myArray[x]=this->myArray[y];
-        this->myArray[y]=temp;
+    QueueElement temp= this->myArray[x];
+    this->myArray[x]=this->myArray[y];
+    this->myArray[y]=temp;
+}
+void Queue::display(ostream &out) const {
+    if(this->empty()==true)
+        out<<"This Queue is empty\n";
+    else {
+        if(full()==true){
+            int j=0;
+            for (int i = myFront; j<QUEUE_CAPACITY; i = (i + 1) % (QUEUE_CAPACITY)) {
+                out << this->myArray[i] << " ";
+                j++;
+            }
+        }else{
+            for (int i = myFront; i != myBack; i = (i + 1) % (QUEUE_CAPACITY))
+                out << this->myArray[i] << " ";
+        }
+        out<<endl;
     }
 }
-
+int Queue::size() const {
+    return mySize;
+}
 ostream &operator<<(ostream &out, const Queue &aList) {
     aList.display(out);
     return out;
