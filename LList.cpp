@@ -129,6 +129,59 @@ void List::display(ostream & out) const{
         }
     }
 }
+void List::selectionSort()
+{
+    Node* temp = this->first;
+
+    // Traverse the List
+    while (temp) {
+        Node* min = temp;
+        Node* r = temp->next;
+
+        // Traverse the unsorted sublist
+        while (r) {
+            if (min->data > r->data)
+                min = r;
+
+            r = r->next;
+        }
+
+        // Swap Data
+        int x = temp->data;
+        temp->data = min->data;
+        min->data = x;
+        temp = temp->next;
+    }
+}
+//void List::selectionSort() {
+//    NodePointer currentptr,nextptr;
+//    currentptr=this->first;
+//    int min=currentptr->data;
+//    nextptr=currentptr->next;
+//    while(nextptr!=NULL){
+//        if(nextptr->data<min){
+//            min=nextptr->data;
+//            swapNodes(currentptr,nextptr);
+//            currentptr=currentptr->next;
+//            nextptr=currentptr->next;
+//
+//        }else{
+//            nextptr=nextptr->next;
+//        }
+//
+//    }
+//}
+
+//void List::swapNodes(List::Node *n1, List::Node *n2) {
+//    Node tmp;
+//    tmp.data=n2->data;
+//    //tmp.next=n2->next;
+//    n2->data=n1->data;
+//    //n2->next=n1->next;
+//    n1->data=tmp.data;
+//    //n1->next=tmp.next;
+//}
+
 ostream &operator<<(ostream & out, const List & aList){
     aList.display(out);
     return out;

@@ -122,11 +122,13 @@ public:
      Postcondition: true is returned if the list elements are in
      ascending order, false if not.
      --------------------------------------------------------------------*/
-
+    void selectionSort();
 private:
     //------ DATA MEMBERS
     NodePointer first;
     int mySize;
+
+
 }; //--- end of List class
 
 ostream & operator<<(ostream & out, const List & aList);

@@ -1,11 +1,21 @@
 #include <iostream>
 #include "LList.h"
-//#include "Q1.h"
-#include "SQueue.h"
-#include "SStack.h"
 using namespace std;
 int main() {
-    /*Queue q1;
+
+    List l1;
+    l1.insert(15,0);
+    l1.insert(28,0);
+    l1.insert(49,1);
+    l1.insert(0,2);
+    l1.insert(420,1);
+    cout<<l1;
+    l1.selectionSort();
+    cout<<l1;
+//    string arr[]={"zxy","zay","add","abc","klm"};
+//    sort(arr,arr+5);
+//    Question1();
+   /* queueType q1;
     q1.enqueue(5);
     q1.enqueue(15);
     q1.enqueue(500);
@@ -13,47 +23,67 @@ int main() {
     q1.enqueue(75);
     q1.enqueue(125);
     q1.enqueue(420);
-    cout<<q1<<endl;
+    cout<<"Q1: "<<q1;
     q1.movNthFront(3);
-    cout<<q1;
+    cout<<"Q1 after moving 3rd element to front: "<<q1;
     q1.dequeue();
-    cout<<q1<<endl;
-    q1.movNthFront(3);
-    cout<<q1;
+    cout<<"Q1 after dequeuing 1st element: "<<q1;
+    q1.movNthFront(4);
+    cout<<"Q1 after moving 4th element to front: "<<q1;
     q1.dequeue();
     q1.dequeue();
     q1.dequeue();
+    cout<<"Q1 after dequeuing 1st element 3 times: "<<q1;
     q1.enqueue(670);
     q1.enqueue(540);
+    cout<<"Q1 after enqueuing 2 new elements: "<<q1;
     q1.dequeue();
-    cout<<q1<<endl;
-    q1.movNthFront(3);
-    cout<<q1;*/
+    cout<<"Q1 after dequeuing 1st element: "<<q1;
+    q1.movNthFront(2);
+    cout<<"Q1 after moving 2nd element to front: "<<q1;*/
+}
 
 
-
-
-
-
-
-
-
-    Stack<int> s1;
+    /*
+    stackType<int> s1;
     s1.push(52);
-    cout<<s1.empty()<<endl;
-    cout<<s1;
     s1.push(27);
     s1.push(252);
-    cout<<s1.top()<<endl;
-    cout<<s1;
     s1.pop();
-    cout<<s1;
-    Stack<int> s2;
+    cout << "s1 after pop: " << s1;
+    stackType<int> s2;
     s2.push(52);
     s2.push(27);
     s2.push(252);
+    cout << "s1 before pop: " << s2;
+    cout << "Comparing s1 and s2 before popping s2: " << (s1 == s2) << endl;
     s2.pop();
-    cout<<(s1==s2);
+    cout << "s2 aftr pop: " << s2;
+    cout << "Comparing s1 and s2 after popping s2: " << (s1 == s2) << endl;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    */
+
+
+
+
+
+
+
+
+
+
 
 
     /*
@@ -79,4 +109,4 @@ int main() {
     //copy.insert(70,0);
     cout<<bool(copy==myList)<<endl;*/
     //Question1();
-}
+//}

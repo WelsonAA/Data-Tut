@@ -1,25 +1,25 @@
 //
 // Created by George Welson on 08-Nov-22.
 //
-#include "SQueue.h"
-Queue::Queue():myFront(-1),myBack(-1),mySize(0){
+#include "queueType.h"
+queueType::queueType():myFront(-1),myBack(-1),mySize(0){
 
 }
-bool Queue::empty() const {
+bool queueType::empty() const {
     if(this->myBack==-1 && this->myFront==-1)
         return true;
     else
         return false;
 }
-bool Queue::full() const {
+bool queueType::full() const {
     if((myFront==myBack)&&(empty()!=true))
         return true;
     else
         return false;
 }
-void Queue::enqueue(const QueueElement &value) {
+void queueType::enqueue(const QueueElement &value) {
     if(full()==true){
-        cout<<"This Queue is full\n";
+        cout<<"This queueType is full\n";
         return;
     }
     if(this->empty()==true){
@@ -32,27 +32,27 @@ void Queue::enqueue(const QueueElement &value) {
     }
     mySize++;
 }
-QueueElement Queue::front() const {
+QueueElement queueType::front() const {
     if(this->empty()==true) {
-        cout << "This Queue is empty\n";
+        cout << "This queueType is empty\n";
         return -1;
     }
     else{
         return this->myArray[this->myFront];
     }
 }
-QueueElement Queue::back() const {
+QueueElement queueType::back() const {
     if(this->empty()==true) {
-        cout << "This Queue is empty\n";
+        cout << "This queueType is empty\n";
         return -1;
     }
     else{
         return this->myArray[this->myBack];
     }
 }
-void Queue::dequeue() {
+void queueType::dequeue() {
     if(this->empty()==true) {
-        cout << "This Queue is empty\n";
+        cout << "This queueType is empty\n";
         return;
     }else if(this->myFront==this->myBack-1){
         this->myFront=-1;
@@ -62,7 +62,7 @@ void Queue::dequeue() {
     }
     mySize--;
 }
-void Queue::movNthFront(int n) {
+void queueType::movNthFront(int n) {
     //validating user input
     if(n>QUEUE_CAPACITY||n<=1||n>mySize) {
         cout << "Invalid index\n";
@@ -107,14 +107,14 @@ void Queue::movNthFront(int n) {
         }
     }
 }
-void Queue::swap(int x, int y) {
+void queueType::swap(int x, int y) {
     QueueElement temp= this->myArray[x];
     this->myArray[x]=this->myArray[y];
     this->myArray[y]=temp;
 }
-void Queue::display(ostream &out) const {
+void queueType::display(ostream &out) const {
     if(this->empty()==true)
-        out<<"This Queue is empty\n";
+        out<<"This queueType is empty\n";
     else {
         if(full()==true){
             int j=0;
@@ -129,10 +129,10 @@ void Queue::display(ostream &out) const {
         out<<endl;
     }
 }
-int Queue::size() const {
+int queueType::size() const {
     return mySize;
 }
-ostream &operator<<(ostream &out, const Queue &aList) {
+ostream &operator<<(ostream &out, const queueType &aList) {
     aList.display(out);
     return out;
 }
