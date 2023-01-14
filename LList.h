@@ -5,7 +5,7 @@
 #ifndef DATA_TUT_LLIST_H
 #define DATA_TUT_LLIST_H
 //
-//  List.hpp
+//  SList.hpp
 //  LinkedList
 //
 //  Created by Ashraf AbdelRaouf on 9/23/15.
@@ -19,7 +19,7 @@
 using namespace std;
 typedef int ElementType;
 
-class List
+class LList
 {
 private:
 
@@ -42,84 +42,84 @@ private:
     typedef Node * NodePointer;
 
 public:
-    //------ List OPERATIONS
-    List();
+    //------ LList OPERATIONS
+    LList();
     /*--------------------------------------------------------------------
-     Default constructor: builds an empty List object.
+     Default constructor: builds an empty LList object.
      Precondition:  None
      Postcondition: first is 0 and mySize is 0.
      --------------------------------------------------------------------*/
-    List(const List & origList);
+    LList(const LList & origList);
     /*--------------------------------------------------------------------
      Copy constructor
      Precondition:  A copy of origList is needed.
      Postcondition: A distincr copy of origList has been constructed.
      --------------------------------------------------------------------*/
-    ~List();
+    ~LList();
     /*--------------------------------------------------------------------
      Destructor
-     Precondition:  This list's lifetime is over.
-     Postcondition: This list has been destroyed.
+     Precondition:  This LList's lifetime is over.
+     Postcondition: This LList has been destroyed.
      --------------------------------------------------------------------*/
-    const List & operator=(const List & rightSide);
+    const LList & operator=(const LList & rightSide);
     /*--------------------------------------------------------------------
      Assignment operator
-     Precondition:  This list must be assigned a value.
-     Postcondition: A copy of rightSide has been assigned to this list.
+     Precondition:  This LList must be assigned a value.
+     Postcondition: A copy of rightSide has been assigned to this LList.
      --------------------------------------------------------------------*/
-    bool operator==(const List & rightSide ) const;
+    bool operator==(const LList & rightSide ) const;
     bool empty() const;
     /*--------------------------------------------------------------------
-     Check if this list is empty
+     Check if this LList is empty
      Precondition:  None.
-     Postcondition: true is returned if this list is empty, false if not.
+     Postcondition: true is returned if this LList is empty, false if not.
      --------------------------------------------------------------------*/
     void insert(ElementType dataVal, int index);
     /*--------------------------------------------------------------------
-     Insert a value into a list at a given index.
-     Precondition:  index is a valid list index: 0 <= index <= mySize,
-     Postcondition: dataVal has been inserted into the list at position
+     Insert a value into a LList at a given index.
+     Precondition:  index is a valid LList index: 0 <= index <= mySize,
+     Postcondition: dataVal has been inserted into the LList at position
      index, provided index is valid..
      --------------------------------------------------------------------*/
     void erase(int index);
     /*--------------------------------------------------------------------
-     Remove a value from a list at a given index.
-     Precondition:  index is a valid list index:  0 <= index < mySize
-     Postcondition: dataVal at list position index has been removed,
+     Remove a value from a LList at a given index.
+     Precondition:  index is a valid LList index:  0 <= index < mySize
+     Postcondition: dataVal at LList position index has been removed,
      provided index is valid.
      --------------------------------------------------------------------*/
     int search(ElementType dataVal);
     /*--------------------------------------------------------------------
-     Search for an data value in this list.
+     Search for an data value in this LList.
      Precondition:  None
      Postcondition: Index of node containing dataVal is returned
      if such a node is found, -1r if not.
      --------------------------------------------------------------------*/
     void display(ostream & out) const;
     /*--------------------------------------------------------------------
-     Display the contensts of this list.
+     Display the contensts of this LList.
      Precondition:  ostream out is open
-     Postcondition: Elements of this list have been output to out.
+     Postcondition: Elements of this LList have been output to out.
      --------------------------------------------------------------------*/
     int nodeCount();
     /*--------------------------------------------------------------------
-     Count the elements of this list.
+     Count the elements of this LList.
      Precondition:  None
-     Postcondition: Number of elements in this list is returned.
+     Postcondition: Number of elements in this LList is returned.
      --------------------------------------------------------------------*/
     void reverse();
     /*--------------------------------------------------------------------
-     Reverse this list.
+     Reverse this LList.
      Precondition:  None
-     Postcondition: Elements in this list have been reversed.
+     Postcondition: Elements in this LList have been reversed.
      --------------------------------------------------------------------*/
     bool ascendingOrder();
 
     int getMySize() const;
     /*--------------------------------------------------------------------
-     Check if the elements of this list are in ascending order.
+     Check if the elements of this LList are in ascending order.
      Precondition:  None
-     Postcondition: true is returned if the list elements are in
+     Postcondition: true is returned if the LList elements are in
      ascending order, false if not.
      --------------------------------------------------------------------*/
     void selectionSort();
@@ -129,10 +129,10 @@ private:
     int mySize;
 
 
-}; //--- end of List class
+}; //--- end of LList class
 
-ostream & operator<<(ostream & out, const List & aList);
-istream & operator>>(istream & in, List & aList);
+ostream & operator<<(ostream & out, const LList & aList);
+istream & operator>>(istream & in, LList & aList);
 
 
 

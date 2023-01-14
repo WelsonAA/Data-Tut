@@ -2,10 +2,10 @@
 // Created by George Welson on 29-Oct-22.
 //
 #include "LList.h"
-List::List():mySize(0),first(NULL){
+LList::LList():mySize(0),first(NULL){
 
 }
-List::List(const List & origList):mySize(origList.getMySize()),first(NULL){
+LList::LList(const LList & origList):mySize(origList.getMySize()),first(NULL){
     if (mySize == 0) return;
     first = new Node(origList.first->data);
     NodePointer newPtr=first;
@@ -18,7 +18,7 @@ List::List(const List & origList):mySize(origList.getMySize()),first(NULL){
 
 
 }
-List::~List(){
+LList::~LList(){
     NodePointer oldptr=this->first;
     NodePointer newptr=oldptr->next;
     while(newptr!=NULL){
@@ -28,7 +28,7 @@ List::~List(){
     }
 }
 
-bool List::operator==(const List &rightSide) const {
+bool LList::operator==(const LList &rightSide) const {
     bool flag=true;
     NodePointer thisptr=this->first;
     NodePointer otherptr=rightSide.first;
@@ -44,20 +44,20 @@ bool List::operator==(const List &rightSide) const {
             return flag;
     }
 }
-const List &List::operator=(const List &rightSide) {
+const LList &LList::operator=(const LList &rightSide) {
     this->mySize=rightSide.mySize;
     this->first=rightSide.first;
 }
 
-int List::getMySize() const {
+int LList::getMySize() const {
     return mySize;
 }
-bool List::empty() const {
+bool LList::empty() const {
     if(mySize==0)return true;
     else return false;
 }
 
-void List::insert(ElementType dataVal, int index) {
+void LList::insert(ElementType dataVal, int index) {
     if(0>index || mySize<index){
         cout<<"Invalid Index\n";
         return;
@@ -77,13 +77,13 @@ void List::insert(ElementType dataVal, int index) {
         }
     }
 }
-void List::erase(int index){
+void LList::erase(int index){
     if (index < 0 || index >= mySize)
     {
         cerr << "Illegal location to delete -- " << index << endl;
         return; }
     mySize--;
-    List::NodePointer ptr,
+    LList::NodePointer ptr,
             predPtr = first;
     if (index == 0)
     {
@@ -99,14 +99,14 @@ void List::erase(int index){
         delete ptr;
     }
 }
-int List::nodeCount() {
+int LList::nodeCount() {
     int i=0;
     for(NodePointer tmp=this->first;tmp!=NULL;tmp=tmp->next){
         ++i;
     }
     return i+1;
 }
-bool List::ascendingOrder() {
+bool LList::ascendingOrder() {
     bool flag=true;
     for(NodePointer tmp=this->first;tmp!=NULL;tmp=tmp->next){
         if(tmp->data>tmp->next->data){
@@ -116,24 +116,24 @@ bool List::ascendingOrder() {
     }
     return flag;
 }
-void List::reverse() {
+void LList::reverse() {
 
 }
-void List::display(ostream & out) const{
+void LList::display(ostream & out) const{
     if(this->empty()==true){
-        cout<<"Empty List\n";
+        cout<<"Empty LList\n";
         return;
     }else{
         for(NodePointer tmp=this->first;tmp!=NULL;tmp=tmp->next){
-            out<<tmp->data<<endl;
+            out<<tmp->data<<'\t';
         }
     }
 }
-void List::selectionSort()
+void LList::selectionSort()
 {
     Node* temp = this->first;
 
-    // Traverse the List
+    // Traverse the LList
     while (temp) {
         Node* min = temp;
         Node* r = temp->next;
@@ -153,7 +153,7 @@ void List::selectionSort()
         temp = temp->next;
     }
 }
-//void List::selectionSort() {
+//void LList::selectionSort() {
 //    NodePointer currentptr,nextptr;
 //    currentptr=this->first;
 //    int min=currentptr->data;
@@ -172,7 +172,7 @@ void List::selectionSort()
 //    }
 //}
 
-//void List::swapNodes(List::Node *n1, List::Node *n2) {
+//void LList::swapNodes(LList::Node *n1, LList::Node *n2) {
 //    Node tmp;
 //    tmp.data=n2->data;
 //    //tmp.next=n2->next;
@@ -182,7 +182,7 @@ void List::selectionSort()
 //    //n1->next=tmp.next;
 //}
 
-ostream &operator<<(ostream & out, const List & aList){
+ostream &operator<<(ostream & out, const LList & aList){
     aList.display(out);
     return out;
 }

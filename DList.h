@@ -7,7 +7,7 @@
 //
 /*-- DList.h --------------------------------------------------------------
 
- This header file defines the data type List for processing lists.
+ This header file defines the data type SList for processing lists.
  Basic operations are:
  Constructor
  Destructor
@@ -29,37 +29,37 @@ using namespace std;
 const int CAPACITY=1024;
 const int INITIALSIZE=0;
 typedef int ElementType;
-class List
+class SList
 {
 public:
     /******** Function Members ********/
     /***** Class constructor *****/
-    List(int maxSize = 1024);
+    SList(int maxSize = 1024);
     /*----------------------------------------------------------------------
-     Construct a List object.
+     Construct a SList object.
 
      Precondition:  maxSize is a positive integer with default value 1024.
-     Postcondition: An empty List object is constructed; myCapacity ==
+     Postcondition: An empty SList object is constructed; myCapacity ==
      maxSize (default value 1024); myArray points to a dynamic
      array with myCapacity as its capacity; and mySize is 0.
      -----------------------------------------------------------------------*/
 
     /***** Class destructor *****/
-    ~List();
+    ~SList();
     /*----------------------------------------------------------------------
-     Destroys a List object.
+     Destroys a SList object.
 
-     Precondition:  The life of a List object is over.
+     Precondition:  The life of a SList object is over.
      Postcondition: The memory dynamically allocated by the constructor
      for the array pointed to by myArray has been returned to the heap.
      -----------------------------------------------------------------------*/
 
     /***** Copy constructor *****/
-    List(const List & origList);
+    SList(const SList & origList);
 
 
     /*----------------------------------------------------------------------
-     Construct a copy of a List object.
+     Construct a copy of a SList object.
 
      Precondition:  A copy of origList is needed; origList is a const
      reference parameter.
@@ -67,9 +67,9 @@ public:
      -----------------------------------------------------------------------*/
 
     /***** Assignment operator *****/
-    const List & operator=(const List & rightHandSide);
+    const SList & operator=(const SList & rightHandSide);
     /*----------------------------------------------------------------------
-     Assign a copy of a List object to the current object.
+     Assign a copy of a SList object to the current object.
 
      Precondition: none
      Postcondition: A copy of rightHandSide has been assigned to this
@@ -100,9 +100,9 @@ public:
 
     ElementType* getMyArray() const;
 
-    bool operator==(const List &rhs) const;
+    bool operator==(const SList &rhs) const;
 
-    bool operator!=(const List &rhs) const;
+    bool operator!=(const SList &rhs) const;
 
     void setMyArray(ElementType *myArray);
 
@@ -114,9 +114,9 @@ private:
     ElementType * myArray;     // pointer to dynamic array
 
 
-}; //--- end of List class
+}; //--- end of SList class
 
 //------ Prototype of output operator
-ostream & operator<< (ostream & out, const List & aList);
+ostream & operator<< (ostream & out, const SList & aList);
 
 #endif /* DList_hpp */

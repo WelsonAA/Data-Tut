@@ -2,27 +2,60 @@
 // Created by George Welson on 16-Oct-22.
 //
 //
-//  List.h
+//  SList.h
 //  ArrayList
 //
 //  Created by Ashraf AbdelRaouf on 9/22/15.
 //  Copyright © 2015 Ashraf AbdelRaouf. All rights reserved.
 //
-/*
-#include "List.h"
+
+#include "SList.h"
 using namespace std;
 
     /******** Function Members ********/
     /***** Class constructor *****/
-    /*
-List::List() {
+
+SList::SList() {
     mySize = 0;
 }
-bool List::empty() const {
+void SList::heapify( int n, int i) {
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+
+    if (l < n && this->myArray[l] > this->myArray[largest])
+        largest = l;
+
+    if (r < n && this->myArray[r] > this->myArray[largest])
+        largest = r;
+
+    if (largest != i) {
+        swap(this->myArray[i], this->myArray[largest]);
+        heapify(n, largest);
+    }
+}
+
+// Function to build the heap
+void SList::buildHeap( int n) {
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify( n, i);
+}
+
+
+// Function to perform HeapSort on the array
+void SList::heapSort() {
+    buildHeap(this->mySize);
+
+    for (int i = mySize - 1; i >= 0; i--) {
+        swap(myArray[0], myArray[i]);
+        heapify( i, 0);
+    }
+}
+bool SList::empty() const {
     if(mySize==0)return true;
     else return false;
 }
-void List::insert(ElementType item, int pos){
+void SList::insert(ElementType item, int pos){
     if(this->empty()==true) {
         myArray[0] = item;
     }
@@ -39,8 +72,8 @@ void List::insert(ElementType item, int pos){
     mySize++;
 }
 
-void List::erase(int pos){
-        if(List::empty()==true)return;
+void SList::erase(int pos){
+        if(SList::empty() == true)return;
         else if(0 <= pos < mySize){
             for (int i = pos; i < mySize -1; i++) {
                 myArray[i] = myArray[i + 1];
@@ -48,36 +81,35 @@ void List::erase(int pos){
         }
         mySize--;
 }
-void List::display(ostream & out) const{
-     if(List::empty()==true) {
+void SList::display(ostream & out) const{
+     if(SList::empty() == true) {
          return;
      }
      for(int i=0;i<mySize;i++){
-        out<<myArray[i]<<endl;
+        out<<myArray[i]<<'\t';
     }
 }
     /*----------------------------------------------------------------------
      Display a list.
 
      Precondition:  The ostream out is open.
-     Postcondition: The list represented by this List object has been
+     Postcondition: The list represented by this SList object has been
      inserted into out.
      -----------------------------------------------------------------------*/
-/*void List::insertEnd(ElementType item){
+void SList::insertEnd(ElementType item){
         if(mySize<CAPACITY)myArray[mySize]=item;
         else return;
         mySize++;
 }
 
-int List::getMySize() const {
+int SList::getMySize() const {
     return mySize;
 }
 
 //------ Prototype of output operator
-ostream & operator<< (ostream & out, const List & aList){
+ostream & operator<< (ostream & out, const SList & aList){
     aList.display(out);
     return out;
-}*/
+}
 
-//#endif
 

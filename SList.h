@@ -1,13 +1,13 @@
 //
-//  List.h
+//  SList.h
 //  ArrayList
 //
 //  Created by Ashraf AbdelRaouf on 9/22/15.
 //  Copyright © 2015 Ashraf AbdelRaouf. All rights reserved.
 //
-/*-- List.h ---------------------------------------------------------------
+/*-- SList.h ---------------------------------------------------------------
  
- This header file defines the data type List for processing lists.
+ This header file defines the data type SList for processing lists.
  Basic operations are:
  Constructor
  empty:    Check if list is empty
@@ -23,21 +23,21 @@ using namespace std;
 //#define LIST
 
 #pragma once
-const int CAPACITY = 1024;
+const int CAPACITY = 12000;
 
 typedef int ElementType;
 
-class List
+class SList
 {
 public:
     /******** Function Members ********/
     /***** Class constructor *****/
-    List();
+    SList();
     /*----------------------------------------------------------------------
-     Construct a List object.
+     Construct a SList object.
      
      Precondition:  None
-     Postcondition: An empty List object has been constructed; mySize is 0.
+     Postcondition: An empty SList object has been constructed; mySize is 0.
      -----------------------------------------------------------------------*/
     
     /***** empty operation *****/
@@ -48,9 +48,11 @@ public:
      Precondition:  None
      Postcondition: true is returned if the list is empty, false if not.
      -----------------------------------------------------------------------*/
-    
+    void heapify(int n, int i);
+    void buildHeap(int n);
+    void heapSort();
     /***** insert and erase *****/
-    void insert(ElementType item, int pos);
+    void insert(ElementType item, int pos=0);
     /*----------------------------------------------------------------------
      Insert a value into the list at a given position.
      
@@ -78,7 +80,7 @@ public:
      Display a list.
      
      Precondition:  The ostream out is open.
-     Postcondition: The list represented by this List object has been
+     Postcondition: The list represented by this SList object has been
      inserted into out.
      -----------------------------------------------------------------------*/
     void insertEnd(ElementType item);
@@ -90,10 +92,10 @@ private:
     int mySize=0;                     // current size of list stored in myArray
     ElementType myArray[CAPACITY];  // array to store list elements
     
-}; //--- end of List class
+}; //--- end of SList class
 
 //------ Prototype of output operator
-ostream & operator<< (ostream & out, const List & aList);
+ostream & operator<< (ostream & out, const SList & aList);
 
 //#endif
 

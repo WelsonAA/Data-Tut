@@ -1,9 +1,80 @@
-#include <iostream>
+#include "SList.h"
 #include "LList.h"
 using namespace std;
+#include <iostream>
+#include <algorithm>
+#include <iostream>
+#include <algorithm>
+#include <random>
+using namespace std;
+
+const int threshold = 20;
+
+void insertionSort(int* arr, int left, int right) {
+    for (int i = left + 1; i <= right; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while (j >= left && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+int partition(int* arr, int left, int right) {
+    int pivot = arr[(left + right) / 2];
+    int i = left - 1;
+    int j = right + 1;
+    while (true) {
+        do {
+            i++;
+        } while (arr[i] < pivot);
+        do {
+            j--;
+        } while (arr[j] > pivot);
+        if (i >= j) {
+            return j;
+        }
+        swap(arr[i], arr[j]);
+    }
+}
+
+void quicksort(int* arr, int left, int right) {
+    if (right - left <= threshold) {
+        insertionSort(arr, left, right);
+        return;
+    }
+    int pivotIndex = partition(arr, left, right);
+    quicksort(arr, left, pivotIndex);
+    quicksort(arr, pivotIndex + 1, right);
+}
+
+int main() {
+    int arr[10000];
+    SList sL1;
+    // fill the array with elements
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(1, 1000000);
+
+    for (int i = 0; i < 10000; i++) {
+        //arr[i] = dist(gen);
+        sL1.insert(dist(gen),i);
+    }
+    sL1.heapSort();
+    cout<<sL1;
+    //quicksort(arr, 0, 9999);
+    for(int i=0;i<10000;i++){
+        //cout<<arr[i]<<'\t';
+
+    }
+    return 0;
+}
+/*
 int main() {
 
-    List l1;
+    SList l1;
     l1.insert(15,0);
     l1.insert(28,0);
     l1.insert(49,1);
@@ -41,7 +112,7 @@ int main() {
     cout<<"Q1 after dequeuing 1st element: "<<q1;
     q1.movNthFront(2);
     cout<<"Q1 after moving 2nd element to front: "<<q1;*/
-}
+
 
 
     /*
@@ -87,7 +158,7 @@ int main() {
 
 
     /*
-    List myList;
+    SList myList;
     cout<<myList.empty()<<endl;
     myList.insert(20,0);
     myList.insert(50,1);
@@ -101,7 +172,7 @@ int main() {
     myList.erase(1);
     myList.erase(5);
     myList.erase(3);
-    List copy(myList);
+    SList copy(myList);
     cout<<"original list:\n"<<myList;
     cout<<"copied list:\n"<<copy;
     cout<<myList.empty()<<endl;

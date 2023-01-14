@@ -3,14 +3,14 @@
 //
 /*
 #include "DList.h"
-List::List(int myCapacity) : myCapacity(myCapacity),mySize(INITIALSIZE),myArray(NULL){
+SList::SList(int myCapacity) : myCapacity(myCapacity),mySize(INITIALSIZE),myArray(NULL){
     myArray = new (nothrow)ElementType[myCapacity];
 }
-List::~List(){
+SList::SListt(){
     delete[] myArray;
     mySize=0;
 }
-const List& List::operator=(const List &rightHandSide) {
+const SList& SList::operator=(const SList &rightHandSide) {
     if (&rightHandSide == this) {
         cout<<"left hand side is the same as right hand side";
         return NULL;
@@ -21,7 +21,7 @@ const List& List::operator=(const List &rightHandSide) {
         this->myArray=rightHandSide.myArray;
     }
 }
-List::List(const List & origList) {
+SList::SList(const SList & origList) {
     myArray = new (nothrow)ElementType[myCapacity];
     this->setMySize(origList.getMySize());
     this->setMyCapacity(origList.getMyCapacity());
@@ -31,7 +31,7 @@ List::List(const List & origList) {
 }
 
 
-bool List::operator==(const List &rhs) const {
+bool SList::operator==(const SList &rhs) const {
     bool flag =true;
     for(int i=0;i<rhs.getMySize();i++){
         if(this->myArray[i]!=rhs.myArray[i]) {
@@ -43,7 +43,7 @@ bool List::operator==(const List &rhs) const {
            myCapacity == rhs.myCapacity &&
            flag;
 }
-void List::insert(ElementType item, int pos){
+void SList::insert(ElementType item, int pos){
     if(this->getMySize()<this->getMyCapacity()){
         this->setMySize(getMySize() + 1);
         for (int i = this->getMySize() - 1; i > pos; i--) {
@@ -51,13 +51,13 @@ void List::insert(ElementType item, int pos){
         }
         this->myArray[pos] = item;
     }else{
-        cout<<"List is already full\n";
+        cout<<"SList is already full\n";
         return;
     }
 }
-void List::erase(int pos){
+void SList::erase(int pos){
     if(this->empty()==true){
-        cout<<"List is Empty\n";
+        cout<<"SList is Empty\n";
         return;
     }else {
         for(int i=pos;i<this->getMySize()-1;i++){
@@ -67,9 +67,9 @@ void List::erase(int pos){
         if(this->empty()== true) delete this;
     }
 }
-void List::display(ostream & out) const{
+void SList::display(ostream & out) const{
     if(this->empty()==true){
-        cout<<"List is empty\n";
+        cout<<"SList is empty\n";
         return;
     }
     else{
@@ -78,35 +78,35 @@ void List::display(ostream & out) const{
         }
     }
 }
-bool List::operator!=(const List &rhs) const {
+bool SList::operator!=(const SList &rhs) const {
     return !(rhs == *this);
 }
 
-int List::getMySize() const {
+int SList::getMySize() const {
     return this->mySize;
 }
-bool List::empty() const{
+bool SList::empty() const{
     if(this->getMySize()==INITIALSIZE)return true;
     else return false;
 }
 
-void List::setMySize(int mySize) {
-    List::mySize = mySize;
+void SList::setMySize(int mySize) {
+    SList::mySize = mySize;
 }
 
 
-void List::setMyCapacity(int myCapacity) {
+void SList::setMyCapacity(int myCapacity) {
     this->myCapacity = myCapacity;
 }
 
-int List::getMyCapacity() const {
+int SList::getMyCapacity() const {
     return this->myCapacity;
 }
-ElementType* List::getMyArray() const {
+ElementType* SList::getMyArray() const {
     return & this->myArray[0];
 }
 
-ostream & operator<< (ostream & out, const List & aList){
+ostream & operator<< (ostream & out, const SList & aList){
     aList.display(out);
     return out;
 }*/
